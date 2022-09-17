@@ -8,50 +8,68 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body class="is-clipped">
-  <nav class="navbar is-dark is-fixed-top">
-    <div class="navbar-brand">
-      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-        <span></span>
-        <span></span>
-        <span></span>
+  <div id="app">
+    <nav class="navbar is-dark is-fixed-top">
+      <div class="navbar-brand">
+        <button @click.prevent="toggleMenu" class="navbar-burger burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </div>
+  
+      <div class="navbar-menu" :class="{ 'is-active': isMenuOpen }">
+        <div class="navbar-end">
+          <a class="navbar-item" href="https://github.com/jaonoctus" target="_blank">
+            <span class="icon">
+              <i class="fas fa-info"></i>
+            </span>
+            <span>Github</span>
+          </a>
+          <a class="navbar-item" href="https://twitter.com/jaonoctus" target="_blank">
+            <span class="icon">
+              <i class="fas fa-info"></i>
+            </span>
+            <span>Twitter</span>
+          </a>
+          <a class="navbar-item" href="./publickey.txt" target="_blank">
+            <span class="icon">
+              <i class="fas fa-info"></i>
+            </span>
+            <span>PGP Key</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <section class="hero is-dark is-fullheight is-fullheight-with-navbar">
+      <div class="hero-body">
+        <div class="container">$ whoami
+          <h1 class="title is-1">
+            João Dias
+          </h1>
+          <h2 class="subtitle is-3">
+            Software Engineer
+          </h2>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp } = Vue
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
-      <div class="navbar-end">
-        <a class="navbar-item" href="https://github.com/jaonoctus" target="_blank">
-          <span class="icon">
-            <i class="fas fa-info"></i>
-          </span>
-          <span>Github</span>
-        </a>
-        <a class="navbar-item" href="https://twitter.com/jaonoctus" target="_blank">
-          <span class="icon">
-            <i class="fas fa-info"></i>
-          </span>
-          <span>Twitter</span>
-        </a>
-        <a class="navbar-item" href="./publickey.txt" target="_blank">
-          <span class="icon">
-            <i class="fas fa-info"></i>
-          </span>
-          <span>PGP Key</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-  <section class="hero is-dark is-fullheight is-fullheight-with-navbar">
-    <div class="hero-body">
-      <div class="container">$ whoami
-        <h1 class="title is-1">
-          João Dias
-        </h1>
-        <h2 class="subtitle is-3">
-          Software Engineer
-        </h2>
-      </div>
-    </div>
-  </section>
-
+    createApp({
+      data() {
+        return {
+          isMenuOpen: false
+        }
+      },
+      methods: {
+        toggleMenu () {
+          this.isMenuOpen = !this.isMenuOpen
+        }
+      }
+    }).mount('#app')
+  </script>
 </body>
 </html>
